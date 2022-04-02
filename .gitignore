@@ -1,0 +1,24 @@
+able_back/__pycache__
+able_back/.sword
+# dependencies
+able_front/node_modules
+able_front/.pnp
+able_front/.pnp.js
+
+# testing
+able_front/coverage
+
+# production
+able_front/build
+
+# misc
+able_front/.DS_Store
+able_front/.env.local
+able_front/.env.development.local
+able_front/.env.test.local
+able_front/.env.production.local
+
+able_front/npm-debug.log*
+able_front/yarn-debug.log*
+able_front/yarn-error.log*
+/node_modules
