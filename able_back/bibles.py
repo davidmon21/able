@@ -18,13 +18,13 @@ class Bibles:
 
     def get_books(self,version):
         books = self.sword.get_bible_from_module(version).get_structure().get_books()
-        book_dict = {'ot':{},'nt':{}}
+        book_dict = {}
         for book in books['ot']:
-            book_dict['ot'][book.osis_name] = { "name": book.name }
-            book_dict['ot'][book.osis_name]["chapters"] = dict(zip(list(range(1,book.num_chapters+1)),book.chapter_lengths))
+            book_dict[book.osis_name] = { "name": book.name }
+            book_dict[book.osis_name]["chapters"] = dict(zip(list(range(1,book.num_chapters+1)),book.chapter_lengths))
         for book in books['nt']:
-            book_dict['nt'][book.osis_name] = { "name": book.name}
-            book_dict['nt'][book.osis_name]["chapters"] = dict(zip(list(range(1,book.num_chapters+1)),book.chapter_lengths))
+            book_dict[book.osis_name] = { "name": book.name}
+            book_dict[book.osis_name]["chapters"] = dict(zip(list(range(1,book.num_chapters+1)),book.chapter_lengths))
         return book_dict
 
     def acceptable_book(self,version):
