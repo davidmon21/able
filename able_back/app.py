@@ -25,7 +25,7 @@ def book_list():
 def get_text():
     collection = Bibles("./.sword")
     versions = collection.get_versions()
-    #make default book, version settable
+    #make default book, version settabled
     version = "DRC"
     book = "john"
     verses = None
