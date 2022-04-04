@@ -29,7 +29,7 @@ def get_text():
     version = "DRC"
     book = "john"
     verses = None
-    chapter = 3
+    chapter = [3]
     if "version" in request.args:
         if request.args["version"] in versions.keys():
             version = request.args["version"]
