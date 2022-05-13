@@ -12,7 +12,7 @@ class Bibles:
 
     def get_versions(self):
         version_info = {}
-        for version in self.bible_collection.keys():
+        for version in self.bible_collection:
             version_info[version] = self.bible_collection[version]['description']
         return version_info
 
@@ -44,24 +44,24 @@ class Bibles:
             version = version
         else:
             version = 'DRC'
-        if verses != None:
+        if verses is not None:
             verses=list(range(verses[0],verses[1]+1))
             print(verses)
         return_dict = {"version": version}
         return_dict["books"] = books
         return_dict["chapters"] = chapters
         text = {}
-        if type(books) == list:
+        if type(books) is list:
             for book in books:
                 for chapter in chapters:
                     text[chapter] = list(self.sword.get_bible_from_module(version).get_iter(book,chapter,verses))
-                    if verses == None:
+                    if verses is None:
                         addedv = list(range(1,len(rtxt)+1))
                     else:
                         addedv = verses
                     text[chapter] = dict(zip(addedv,rtxt))
                 return_dict["text"][book] = text
-        elif type(chapters) == list:
+        elif type(chapters) is list:
             for chapter in chapters:
                 rtxt = list(self.sword.get_bible_from_module(version).get_iter(books,chapter,verses))
                 if verses == None:

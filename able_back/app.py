@@ -1,13 +1,12 @@
-from gc import collect
-from flask.helpers import make_response
 import json
 import os
 from bibles import Bibles
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
+
 
 @app.route('/book_list')
 def book_list():
@@ -17,7 +16,7 @@ def book_list():
     #make default book, version settable
     version = "DRC"
     if "version" in request.args:
-        if request.args["version"] in versions.keys():
+        if request.args["version"] in versions:
             version = request.args["version"] 
     return json.dumps(collection.get_books(version))
 
@@ -31,7 +30,7 @@ def get_text():
     verses = None
     chapter = [3]
     if "version" in request.args:
-        if request.args["version"] in versions.keys():
+        if request.args["version"] in versions:
             version = request.args["version"]
     if "book" in request.args:
         book = request.args["book"]
